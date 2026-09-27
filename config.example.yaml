@@ -1,0 +1,50 @@
+# Copy to config.yaml and edit. Anything you leave out uses the default shown here.
+
+# Defaults for servers that haven't run /setup yet (languages, mode, character and
+# post_transcripts); each server can choose its own with /setup.
+character: nova            # a file in characters/ (without .yaml)
+
+llm:
+  provider: anthropic      # anthropic | openai_compatible
+  model: claude-opus-5
+  effort: low              # low keeps voice replies quick; set to null for models without effort (e.g. claude-haiku-4-5)
+  fallbacks: true          # if Claude declines, retry on Anthropic's recommended fallback model
+  max_tokens: 4096
+
+  # Local model instead (Ollama, LM Studio, llama.cpp, vLLM...):
+  # provider: openai_compatible
+  # model: llama3.1:8b
+  # base_url: http://localhost:11434/v1
+  # api_key_env: OPENAI_API_KEY   # only if your server needs a key
+  # max_tokens: 1024
+
+stt:
+  model: small             # tiny | base | small | medium | large-v3 | large-v3-turbo | distil-large-v3
+  device: auto             # auto (GPU if it works, else CPU) | cuda | cpu
+  # Languages people speak, as codes: en English, zh Chinese, ja Japanese, es Spanish...
+  # Speech is only ever recognised as one of these. This is the default for servers
+  # that haven't run /setup yet; each server picks its own there.
+  languages: [en]
+
+tts:
+  provider: edge           # edge | none (text replies only). Change the voice itself with /voice in Discord.
+
+listening:
+  mode: wake               # wake: answers when its name is said | always: answers everything
+  followup_seconds: 30     # after it answers you, start talking within this many seconds and you don't need its name
+  silence_ms: 800          # quiet time that ends a sentence
+  min_speech_ms: 350       # shorter blips are ignored
+  max_utterance_s: 30
+  volume_threshold: 400    # raise if background noise triggers it, lower if quiet voices are missed
+  interrupt: true          # talking over the bot makes it stop
+  leave_when_alone: true
+
+privacy:
+  require_opt_in: true     # only listen to people who ran /optin
+  post_transcripts: true   # post what it heard and said in the voice channel's text chat
+
+memory:
+  max_turns: 30            # conversation kept in memory per server (never written to disk)
+
+playback:
+  volume: 1.0

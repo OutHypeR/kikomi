@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kikomi"
+version = "0.1.0"
+description = "A Discord bot that joins voice channels, listens, and talks back as a character."
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "discord.py[voice]==2.7.1",
+    "discord-ext-voice-recv==0.5.2a179",
+    "faster-whisper>=1.2",
+    "anthropic>=1.8",
+    "openai>=1.50",
+    "edge-tts>=7.0",
+    "numpy>=1.26",
+    "PyYAML>=6.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+# NVIDIA GPU speech recognition without a separate CUDA install
+gpu = ["nvidia-cublas-cu12", "nvidia-cudnn-cu12==9.*"]
+dev = ["pytest>=8"]
+
+[project.scripts]
+kikomi = "kikomi.__main__:main"
+
+[tool.setuptools]
+packages = ["kikomi"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
