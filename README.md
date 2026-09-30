@@ -14,8 +14,8 @@ and starts speaking before it has finished thinking of the whole reply.
 - **Asks first**: by default it only listens to people who opt in, and never saves audio.
 - **Characters**: a character is a short YAML file with a personality and a voice.
 
-> kikomi is a sister project to **[Hikomi](https://gethikomi.com)**, the AI companion desktop app by HIKOMI LABS.
-> It is an independent, open-source take on the idea for Discord, and shares no code or assets with Hikomi.
+> kikomi is a sister project to **[hikomi](https://hikomi.ai)**, the AI companion desktop app by HIKOMI LABS.
+> It is an independent, open-source take on the idea for Discord, and shares no code or assets with hikomi.
 
 ## Setup
 
